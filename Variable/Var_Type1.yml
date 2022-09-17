@@ -1,0 +1,27 @@
+---
+- hosts: all 
+  vars:
+    mydir: /tmp/cloud
+    myfile: /etc/passwd
+    mypkg:
+      - httpd
+      - nfs-utils
+      - tree
+      - samba
+  tasks: 
+    - name: "This Task Going to Create Directory."
+      file:
+        path: "{{ mydir }}"
+        state: directory
+    - name: "This task Going to Copy the File."
+      copy: 
+        src: "{{ myfile }}"
+        dest: "{{ mydir }}"
+        owner: docker
+        group: docker
+        mode: 750 
+    - name: "This Task Going to install Packages."
+      yum:
+        name: "{{ mypkg }}"
+        state: latest
+...

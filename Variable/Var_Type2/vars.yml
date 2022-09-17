@@ -1,0 +1,8 @@
+  vars:
+    mydir: /tmp/cloud
+    myfile: /etc/passwd
+    mypkg:
+      - httpd
+      - nfs-utils
+      - tree
+      - samba
