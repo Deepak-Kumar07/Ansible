@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+    - name: To use with_item loop.
+      copy:
+        src: "{{ item }}"
+        dest: /temp
+      with_items:
+        - /etc/passwd
+        - /etc/group
+        - /etc/shadow
+        - /ect/gshadow
+...
