@@ -1,0 +1,16 @@
+---
+- name: To install Apache package in Centos and Ubuntu server
+  hosts: all
+  tasks:
+    - name: "Using Yum module to install Apache package in Centos server."
+      yum: 
+        name: httpd 
+        # if you want to uninstall then use "absent" and .
+        state: latest 
+      when: ansible_facts['distribution'] == "CentOS"
+    - name: "Using apt module to install Apache package in Ubuntu server"
+      apt:
+        name: apache2
+        state: present
+      when: ansible_facts['distribution'] == "Ubuntu"
+...
